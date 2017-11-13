@@ -28,3 +28,18 @@ export type Item = {
 	id: number,
 	name: string,
 }
+
+export type User = {
+	id: number,
+	username: string,
+	twitter: string,
+	language: string,
+	solved_questions: number[],
+}
+
+export type Question = {
+	id: number,
+	title: string,
+	description: string,
+	solvers: number[],
+}
