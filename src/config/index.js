@@ -1,5 +1,8 @@
 // @flow
 
+import { persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // or whatever storage you are using
+import type { Reducer } from '../types'
 const { NODE_ENV, REACT_APP_HOGE, REACT_APP_FUGA_URL } = process.env
 
 if (REACT_APP_HOGE === null || REACT_APP_FUGA_URL === null || !NODE_ENV) {
@@ -9,8 +12,6 @@ if (REACT_APP_HOGE === null || REACT_APP_FUGA_URL === null || !NODE_ENV) {
 
 type Config = {
 	+isDev: boolean,
-	+hoge: string,
-	+fugaURL: string,
 	+admin: {
 		+name: string,
 		+countMax: number,
@@ -33,9 +34,14 @@ const configProduction = {
 
 const config: Config = {
 	isDev,
-	hoge: REACT_APP_HOGE,
-	fugaURL: REACT_APP_FUGA_URL,
 	...(isDev ? configDevelopment : configProduction),
+}
+const storageConfig = {
+	key: 'primary',
+	storage,
+}
+export function combineReducers(reducers: Object): Reducer {
+	return persistCombineReducers(storageConfig, reducers)
 }
 
 export default config
