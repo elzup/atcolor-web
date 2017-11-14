@@ -9,7 +9,7 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"deploy":
-			"rsync -nrtvpl --exclude-from=.rsyncignore ./build cps_hiro:~/atcolor-web",
+			"rsync -rtvpl --exclude-from=.rsyncignore ./build cps_hiro:~/atcolor-web",
 		"flow": "flow",
 		"precommit": "lint-staged"
 	},
