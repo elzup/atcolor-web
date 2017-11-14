@@ -48,7 +48,7 @@ class Container extends React.Component<Props> {
 				</Header>
 				{props.users.map(user => {
 					return (
-						<Row>
+						<Row key={user.id}>
 							<Cell>
 								<Row>
 									<Name>{user.username}</Name>
@@ -66,7 +66,11 @@ class Container extends React.Component<Props> {
 							<div>
 								{props.qids.map(qid => {
 									const solved = user.solvedQuestions.indexOf(qid) > -1
-									return <Mark active={solved}>'✜'</Mark>
+									return (
+										<Mark key={qid} active={solved}>
+											'✜'
+										</Mark>
+									)
 								})}
 							</div>
 						</Row>

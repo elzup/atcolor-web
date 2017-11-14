@@ -29,7 +29,7 @@ class Container extends React.Component<Props> {
 					if (!solver) {
 						return null
 					}
-					return <Label>{solver.username + ' '}</Label>
+					return <Label key={solver.id}>{solver.username + ' '}</Label>
 				})}
 			</Wrap>
 		)

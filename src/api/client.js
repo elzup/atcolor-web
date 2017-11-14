@@ -14,10 +14,10 @@ const baseHeaders = {
 	'Content-Type': 'application/json',
 }
 
-type GetQuestionsCallback = (res: {
+type GetQuestionsCallback = {
 	questions: Question[],
 	users: User[],
-}) => void
+}
 
 export async function getQuestions(): Promise<GetQuestionsCallback> {
 	const questionsRequest = request.get(host + '/v1/q').set(baseHeaders)
@@ -36,7 +36,7 @@ export async function getQuestions(): Promise<GetQuestionsCallback> {
 	} = camelcaseKeysRecursive(normalizedData, { deep: true })
 	const { questions, users } = camelizedData.entities
 
-	Object.values(questions).map(q => {
+	Object.values(questions).forEach(q => {
 		q.solvers.forEach(id => {
 			if (!users[id].solvedQuestions) {
 				users[id].solvedQuestions = []

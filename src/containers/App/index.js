@@ -34,7 +34,7 @@ const StyledLink = styled.span`
 `
 
 const ExLink = ({ to, label }) => (
-	<Link prefetch to={to} passHref>
+	<Link to={to}>
 		<StyledLink>{label}</StyledLink>
 	</Link>
 )
@@ -51,9 +51,6 @@ const App = () => (
 				</LinkItem>
 				<LinkItem>
 					<ExLink to="/users" label="Users" />
-				</LinkItem>
-				<LinkItem>
-					<ExLink to="/pixels" label="Pixels" />
 				</LinkItem>
 			</LinkList>
 

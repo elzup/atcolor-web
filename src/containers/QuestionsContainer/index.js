@@ -22,7 +22,9 @@ class Container extends React.Component<Props> {
 						<br /> Host: api-atcolor.cps.im.dendai.ac.jp
 					</p>
 				</Header>
-				<div>{props.questions.map(id => <QuestionItem questionId={id} />)}</div>
+				<div>
+					{props.questions.map(id => <QuestionItem key={id} questionId={id} />)}
+				</div>
 			</Wrapper>
 		)
 	}
