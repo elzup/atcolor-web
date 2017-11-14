@@ -1,14 +1,12 @@
 // @flow
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
-import type { State, User } from '../../types'
 import _ from 'lodash'
 
-import styled from 'styled-components'
+import type { State, User } from '../../types'
+import { Wrapper } from '../../components'
 
-const Wrap = styled.div`
-	padding: 10px;
-`
+import styled from 'styled-components'
 
 const Row = styled.div`
 	display: flex;
@@ -28,7 +26,7 @@ class Container extends React.Component<Props> {
 	render() {
 		const { props } = this
 		return (
-			<Wrap>
+			<Wrapper>
 				{props.users.map(user => {
 					return (
 						<div>
@@ -41,7 +39,7 @@ class Container extends React.Component<Props> {
 						</div>
 					)
 				})}
-			</Wrap>
+			</Wrapper>
 		)
 	}
 }

@@ -6,10 +6,8 @@ import { connect, type Connector } from 'react-redux'
 import type { State, Question } from '../../types'
 import SolverContainer from '../SolverContainer'
 
-const Wrap = styled.div`
-	width: 700px;
-	margin-bottom: 50px;
-`
+import { Wrapper } from '../../components'
+
 const Row = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -41,7 +39,7 @@ class Container extends React.Component<Props> {
 	render() {
 		const { props } = this
 		return (
-			<Wrap>
+			<Wrapper>
 				<Row>
 					<Row>
 						<Qnum>Q{props.question.qid}.</Qnum>
@@ -53,7 +51,7 @@ class Container extends React.Component<Props> {
 				<div>
 					<SolverContainer solverIds={props.question.solvers} />
 				</div>
-			</Wrap>
+			</Wrapper>
 		)
 	}
 }
