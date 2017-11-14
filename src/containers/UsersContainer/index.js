@@ -26,6 +26,13 @@ const Label = styled.div`
 	color: ${p => (p.active ? 'black' : '#aaa')};
 `
 
+const Mark = styled.span`
+	padding: 0px 5px;
+	font-size: 1.2em;
+	color: ${p => (p.active ? '#26dec6' : '#ccc')};
+}
+`
+
 type Props = {
 	users: User[],
 	qids: number[],
@@ -39,39 +46,30 @@ class Container extends React.Component<Props> {
 				<Header>
 					<h1> User List </h1>
 				</Header>
-				<table border="1" style={{}}>
-					<tr>
-						<th />
-						{props.qids.map(qid => <th>Q{qid}</th>)}
-					</tr>
-					{props.users.map(user => {
-						return (
-							<tr>
-								<th>
-									<Cell>
-										<Row>
-											<Name>{user.username}</Name>
-											<span>{user.totalPoint}pt</span>
-										</Row>
-										<Row>
-											<div>
-												<Label active={user.twitter}>
-													twitter: {user.twitter}
-												</Label>
-												<Label active={user.language}>
-													language: {user.language}
-												</Label>
-											</div>
-										</Row>
-									</Cell>
-								</th>
-								{props.qids.map(qid => (
-									<td>{user.solvedQuestions.indexOf(qid) > -1 ? 'o' : 'x'}</td>
-								))}
-							</tr>
-						)
-					})}
-				</table>
+				{props.users.map(user => {
+					return (
+						<div>
+							<Cell>
+								<Row>
+									<Name>{user.username}</Name>
+									<span>{user.totalPoint}pt</span>
+								</Row>
+								<Row>
+									<div>
+										<Label active={user.twitter}>twitter: {user.twitter}</Label>
+										<Label active={user.language}>
+											language: {user.language}
+										</Label>
+									</div>
+								</Row>
+							</Cell>
+							{props.qids.map(qid => {
+								const solved = user.solvedQuestions.indexOf(qid) > -1
+								return <Mark active={solved}>'✜'</Mark>
+							})}
+						</div>
+					)
+				})}
 			</Wrapper>
 		)
 	}
