@@ -12,22 +12,26 @@ type Props = {
 	solvers: User[],
 }
 
+const Wrap = styled.div`
+	word-wrap: break-word;
+`
+
 const Label = styled.span`
-	padding: 0 5px;
+	padding: 0 2px;
 `
 
 class Container extends React.Component<Props> {
 	render() {
 		const { props } = this
 		return (
-			<p>
+			<Wrap>
 				{props.solvers.map(solver => {
 					if (!solver) {
 						return null
 					}
-					return <Label>{solver.username}</Label>
+					return <Label>{solver.username + ' '}</Label>
 				})}
-			</p>
+			</Wrap>
 		)
 	}
 }
