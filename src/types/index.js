@@ -42,8 +42,8 @@ export type Item = {
 export type User = {
 	id: number,
 	username: string,
-	twitter: string,
-	language: string,
+	twitter?: string,
+	language?: string,
 	solved_questions: number[],
 }
 
