@@ -50,6 +50,7 @@ export type User = {
 
 export type Question = {
 	id: number,
+	qid: number,
 	title: string,
 	point: number,
 	description: string,

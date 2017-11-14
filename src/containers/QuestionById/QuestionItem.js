@@ -19,6 +19,11 @@ const Title = styled.h3`
 	margin: 0;
 `
 
+const Qnum = styled.h3`
+	padding: 0;
+	margin: 0;
+`
+
 const Info = styled.span`
 	padding: 0 5px;
 `
@@ -38,6 +43,7 @@ class Container extends React.Component<Props> {
 			<Wrap>
 				<Row>
 					<Row>
+						<Qnum>{props.question.qid}</Qnum>
 						<Title>{props.question.title}</Title>
 						<Info>{props.question.description}</Info>
 					</Row>
