@@ -4,7 +4,7 @@ import { connect, type Connector } from 'react-redux'
 import _ from 'lodash'
 
 import type { State, User } from '../../types'
-import { Wrapper } from '../../components'
+import { Wrapper, Header } from '../../components'
 
 import styled from 'styled-components'
 
@@ -27,6 +27,9 @@ class Container extends React.Component<Props> {
 		const { props } = this
 		return (
 			<Wrapper>
+				<Header>
+					<h1> User List </h1>
+				</Header>
 				{props.users.map(user => {
 					return (
 						<div>

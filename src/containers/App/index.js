@@ -2,7 +2,7 @@ import React from 'react'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 import FlatButton from 'material-ui/FlatButton'
 

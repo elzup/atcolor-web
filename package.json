@@ -8,7 +8,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"deploy": "npm run build && gh-pages -d build",
+		"deploy":
+			"rsync -nrtvpl --exclude-from=.rsyncignore ./build cps_hiro:~/atcolor-web",
 		"flow": "flow",
 		"precommit": "lint-staged"
 	},
@@ -53,9 +54,6 @@
 		"s2s-plugins-redux": "^0.3.2"
 	},
 	"lint-staged": {
-		"src/**/*.js": [
-			"prettier --config ./.prettierrc --write",
-			"git add"
-		]
+		"src/**/*.js": ["prettier --config ./.prettierrc --write", "git add"]
 	}
 }
