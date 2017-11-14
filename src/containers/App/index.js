@@ -13,17 +13,13 @@ const LinkList = styled.ul`
 
 const LinkItem = styled.li`
 	font-size: 1.5em;
-	margin-left: 10px;
+	margin: 0 20px;
 `
 
-const ButtonWrap = styled.div`
-	color: purple !important;
+const Title = styled.h3`
+	padding: 0;
+	margin: 0;
 `
-const HLink = props => (
-	<ButtonWrap>
-		<Link {...props}>{props.name}</Link>
-	</ButtonWrap>
-)
 
 const Pixels = () => (
 	<div>
@@ -47,6 +43,9 @@ const App = () => (
 	<Router>
 		<div>
 			<LinkList>
+				<LinkItem>
+					<Title>AtColor</Title>
+				</LinkItem>
 				<LinkItem>
 					<ExLink to="/" label="Home" />
 				</LinkItem>
