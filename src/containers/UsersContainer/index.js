@@ -10,10 +10,11 @@ import styled from 'styled-components'
 
 const Cell = styled.div`
 	margin-bottom: 20px;
-	max-width: 400px;
+	min-width: 250px;
 `
 const Row = styled.div`
 	display: flex;
+	justify-content: space-between;
 `
 
 const Name = styled.h3`
@@ -48,7 +49,7 @@ class Container extends React.Component<Props> {
 				</Header>
 				{props.users.map(user => {
 					return (
-						<div>
+						<Row>
 							<Cell>
 								<Row>
 									<Name>{user.username}</Name>
@@ -63,11 +64,13 @@ class Container extends React.Component<Props> {
 									</div>
 								</Row>
 							</Cell>
-							{props.qids.map(qid => {
-								const solved = user.solvedQuestions.indexOf(qid) > -1
-								return <Mark active={solved}>'✜'</Mark>
-							})}
-						</div>
+							<div>
+								{props.qids.map(qid => {
+									const solved = user.solvedQuestions.indexOf(qid) > -1
+									return <Mark active={solved}>'✜'</Mark>
+								})}
+							</div>
+						</Row>
 					)
 				})}
 			</Wrapper>
