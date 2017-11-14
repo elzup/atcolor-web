@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
-import styled from 'styled-components'
-import _ from 'lodash'
 
 import QuestionItem from '../QuestionById/QuestionItem'
 import { Wrapper, Header } from '../../components'
@@ -31,7 +29,7 @@ class Container extends React.Component<Props> {
 }
 
 const ms = (state: State) => ({
-	questions: _.values(state.QuestionsContainer),
+	questions: state.QuestionsContainer,
 })
 
 const conn: Connector<{}, Props> = connect(ms, {})

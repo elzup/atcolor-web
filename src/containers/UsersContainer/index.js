@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
-import _ from 'lodash'
 
 import type { State, User } from '../../types'
 import { Wrapper, Header } from '../../components'
@@ -78,11 +77,15 @@ class Container extends React.Component<Props> {
 	}
 }
 
-const ms = (state: State) => ({
-	users: _.sortBy(_.mapValues(state.UserById), p => -p.totalPoint),
-	qids: _.values(state.QuestionById).map(q => q.qid),
-})
+const ms = (state: State) => {
+	const users = Object.values(state.UserById)
+	users.sort((a, b) => b.totalPoint - a.totalPoint)
 
+	return {
+		users,
+		qids: Object.values(state.QuestionById).map(q => q.qid),
+	}
+}
 const conn: Connector<{}, Props> = connect(ms, {})
 
 export default conn(Container)

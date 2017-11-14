@@ -3,7 +3,6 @@
 import camelcaseKeysRecursive from 'camelcase-keys-recursive'
 import { normalizeQuestions } from './normalize'
 import request from 'superagent'
-import _ from 'lodash'
 
 import type { User, Question } from '../types'
 
@@ -29,18 +28,24 @@ export async function getQuestions(): Promise<GetQuestionsCallback> {
 	})
 
 	const normalizedData = normalizeQuestions(res.body)
-	const camelizedData = camelcaseKeysRecursive(normalizedData, { deep: true })
+	const camelizedData: {
+		entities: {
+			questions: { [id: number]: Question },
+			users: { [id: number]: User },
+		},
+	} = camelcaseKeysRecursive(normalizedData, { deep: true })
 	const { questions, users } = camelizedData.entities
 
-	_.values(questions).map(q => {
+	Object.values(questions).map(q => {
 		q.solvers.forEach(id => {
-			users[id].solvedQuestions = users[id].solvedQuestions || []
+			if (!users[id].solvedQuestions) {
+				users[id].solvedQuestions = []
+			}
 			users[id].solvedQuestions.push(q.qid)
 		})
 	})
-
 	return {
-		questions: _.values(questions),
-		users: _.values(users),
+		questions: Object.values(questions),
+		users: Object.values(users),
 	}
 }
