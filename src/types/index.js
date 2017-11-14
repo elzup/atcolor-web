@@ -51,6 +51,7 @@ export type User = {
 export type Question = {
 	id: number,
 	title: string,
+	point: number,
 	description: string,
 	solvers: number[],
 }
