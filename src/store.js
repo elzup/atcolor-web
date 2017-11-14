@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import reducer from './reducer'
 import type { Store } from './types'
 import { persistStore } from 'redux-persist'
+import { loadQuestions } from './containers/App/logic'
 
 export default () => {
 	const middleware = [thunk]
@@ -17,6 +18,8 @@ export default () => {
 		: compose(applyMiddleware(...middleware))
 
 	const store: Store = createStore(reducer, composer)
-	persistStore(store)
+	persistStore(store, () => {
+		store.dispatch(loadQuestions())
+	})
 	return store
 }

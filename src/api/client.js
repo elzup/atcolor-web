@@ -8,7 +8,7 @@ import _ from 'lodash'
 import type { User, Question } from '../types'
 
 const host = 'http://api-atcolor.cps.im.dendai.ac.jp/admin/admin_users/3'
-const TIMEOUT = 5000
+// const TIMEOUT = 5000
 
 const baseHeaders = {
 	'Content-Type': 'application/json',
