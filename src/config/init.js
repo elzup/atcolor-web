@@ -17,4 +17,8 @@ li {
 .is-active {
 	color: red;
 }
+
+td, th {
+	text-align: left;
+}
 `

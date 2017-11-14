@@ -7,8 +7,8 @@ import * as client from '../../api/client'
 export function loadQuestions(): ThunkAction {
 	return async dispatch => {
 		dispatch(flagIsHere('FLAG_FLOW_REDUX_PERSIST'))
-		const res = await client.getQuestions()
-		dispatch(receiveQuestions(res.questions))
-		dispatch(receiveUsers(res.users))
+		const { questions, users } = await client.getQuestions()
+		dispatch(receiveQuestions(questions))
+		dispatch(receiveUsers(users))
 	}
 }

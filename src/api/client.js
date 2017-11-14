@@ -30,10 +30,17 @@ export async function getQuestions(): Promise<GetQuestionsCallback> {
 
 	const normalizedData = normalizeQuestions(res.body)
 	const camelizedData = camelcaseKeysRecursive(normalizedData, { deep: true })
+	const { questions, users } = camelizedData.entities
+
+	_.values(questions).map(q => {
+		q.solvers.forEach(id => {
+			users[id].solvedQuestions = users[id].solvedQuestions || []
+			users[id].solvedQuestions.push(q.qid)
+		})
+	})
 
 	return {
-		questions: [],
-		users: [],
-		..._.mapValues(camelizedData.entities, _.values),
+		questions: _.values(questions),
+		users: _.values(users),
 	}
 }
