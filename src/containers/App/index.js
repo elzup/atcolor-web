@@ -1,10 +1,6 @@
 import React from 'react'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
-
-import FlatButton from 'material-ui/FlatButton'
 
 import styled from 'styled-components'
 
@@ -20,12 +16,13 @@ const LinkItem = styled.li`
 	margin-left: 10px;
 `
 
+const ButtonWrap = styled.div`
+	color: purple !important;
+`
 const HLink = props => (
-	<FlatButton
-		primary={true}
-		label={props.name}
-		containerElement={<Link {...props} />}
-	/>
+	<ButtonWrap>
+		<Link {...props}>{props.name}</Link>
+	</ButtonWrap>
 )
 
 const Pixels = () => (
@@ -35,29 +32,38 @@ const Pixels = () => (
 	</div>
 )
 
+const StyledLink = styled.span`
+	color: #a500bd;
+	text-decoration: none !important;
+`
+
+const ExLink = ({ to, label }) => (
+	<Link prefetch to={to} passHref>
+		<StyledLink>{label}</StyledLink>
+	</Link>
+)
+
 const App = () => (
-	<MuiThemeProvider muiTheme={getMuiTheme()}>
-		<Router>
-			<div>
-				<LinkList>
-					<LinkItem>
-						<HLink to="/" name="Home" />
-					</LinkItem>
-					<LinkItem>
-						<HLink to="/users" name="Users" />
-					</LinkItem>
-					<LinkItem>
-						<HLink to="/pixels" name="Pixels" />
-					</LinkItem>
-				</LinkList>
+	<Router>
+		<div>
+			<LinkList>
+				<LinkItem>
+					<ExLink to="/" label="Home" />
+				</LinkItem>
+				<LinkItem>
+					<ExLink to="/users" label="Users" />
+				</LinkItem>
+				<LinkItem>
+					<ExLink to="/pixels" label="Pixels" />
+				</LinkItem>
+			</LinkList>
 
-				<hr />
+			<hr />
 
-				<Route exact path="/" component={Home} />
-				<Route path="/users" component={Users} />
-				<Route path="/pixels" component={Pixels} />
-			</div>
-		</Router>
-	</MuiThemeProvider>
+			<Route exact path="/" component={Home} />
+			<Route path="/users" component={Users} />
+			<Route path="/pixels" component={Pixels} />
+		</div>
+	</Router>
 )
 export default App

@@ -20,4 +20,8 @@ li {
 td, th {
 	text-align: left;
 }
+
+a {
+	text-decoration: none;
+}
 `
