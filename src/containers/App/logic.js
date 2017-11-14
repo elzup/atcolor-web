@@ -5,11 +5,13 @@ import { receiveUsers } from '../UsersContainer/actions'
 import * as client from '../../api/client'
 
 export function loadQuestions(): ThunkAction {
-	console.log('hoge')
 	return async dispatch => {
-		const res = await client.getQuestions()
-		debugger
-		receiveQuestions(res.questions)
-		receiveUsers(res.users)
+		const res = await client.getQuestions().catch(err => {
+			// TODO:
+			console.log(err)
+			return false
+		})
+		dispatch(receiveQuestions(res.questions))
+		dispatch(receiveUsers(res.users))
 	}
 }

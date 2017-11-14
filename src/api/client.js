@@ -7,7 +7,8 @@ import _ from 'lodash'
 
 import type { User, Question } from '../types'
 
-const host = 'http://api-atcolor.cps.im.dendai.ac.jp/admin/admin_users/3'
+const host = 'http://api-atcolor.cps.im.dendai.ac.jp'
+// const host = 'http://localhost:3001'
 // const TIMEOUT = 5000
 
 const baseHeaders = {
@@ -20,7 +21,7 @@ type GetQuestionsCallback = (res: {
 }) => void
 
 export async function getQuestions(): Promise<GetQuestionsCallback> {
-	const questionsRequest = request.get(host + '/v1/questions').set(baseHeaders)
+	const questionsRequest = request.get(host + '/v1/q').set(baseHeaders)
 	const res = await new Promise((resolve, reject) => {
 		questionsRequest.end((err, res) => {
 			resolve(err || res)

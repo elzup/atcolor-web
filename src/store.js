@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer'
 import type { Store } from './types'
-import { persistStore } from 'redux-persist'
+// import { persistStore } from 'redux-persist'
 import { loadQuestions } from './containers/App/logic'
 
 export default () => {
@@ -18,8 +18,9 @@ export default () => {
 		: compose(applyMiddleware(...middleware))
 
 	const store: Store = createStore(reducer, composer)
-	persistStore(store, () => {
-		store.dispatch(loadQuestions())
-	})
+	// persistStore(store, () => {
+	// 	console.log(store)
+	// })
+	store.dispatch(loadQuestions())
 	return store
 }
