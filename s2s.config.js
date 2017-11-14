@@ -85,7 +85,7 @@ const plugins = [
 ]
 
 module.exports = {
-	watch: './**/*.js',
+	watch: './src/**/*.js',
 	plugins,
 	templates: [
 		{ test: /containers\/.*\/index.js/, input: 'containers.js' },
