@@ -14,7 +14,7 @@ type RehydrateAction = {
 	payload: _State,
 }
 
-export type State = { ..._State, _persist: _persist }
+export type State = _State
 export type Action = _Action | RehydrateAction
 
 export type Reducer = (state: State, action: Action) => State
@@ -42,7 +42,7 @@ export type Item = {
 export type User = {
 	id: number,
 	username: string,
-	totalPoint: string,
+	totalPoint: number,
 	twitter?: string,
 	language?: string,
 	solvedQuestions: number[],

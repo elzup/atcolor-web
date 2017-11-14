@@ -6,11 +6,7 @@ import * as client from '../../api/client'
 
 export function loadQuestions(): ThunkAction {
 	return async dispatch => {
-		const res = await client.getQuestions().catch(err => {
-			// TODO:
-			console.log(err)
-			return false
-		})
+		const res = await client.getQuestions()
 		dispatch(receiveQuestions(res.questions))
 		dispatch(receiveUsers(res.users))
 	}

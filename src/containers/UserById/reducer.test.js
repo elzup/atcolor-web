@@ -10,9 +10,9 @@ test('provide the initial state', () => {
 var u: User = {
 	id: 0,
 	language: 'js',
-	solved_questions: [],
-	twitter: 'hoge',
+	solvedQuestions: [],
 	username: 'fuga',
+	totalPoint: 0,
 }
 test('handle RECEIVE_USERS', () => {
 	expect(reducer(initialState, actions.receiveUsers([u]))).toEqual({ '0': u })
