@@ -8,6 +8,7 @@ import SolverContainer from '../SolverContainer'
 
 const Wrap = styled.div`
 	width: 700px;
+	margin-bottom: 50px;
 `
 const Row = styled.div`
 	display: flex;
@@ -16,6 +17,11 @@ const Row = styled.div`
 
 const Title = styled.h3`
 	padding: 0;
+	margin: 0;
+`
+
+const Qnum = styled.h3`
+	padding: 0 10px 0 0;
 	margin: 0;
 `
 
@@ -38,6 +44,7 @@ class Container extends React.Component<Props> {
 			<Wrap>
 				<Row>
 					<Row>
+						<Qnum>Q{props.question.qid}.</Qnum>
 						<Title>{props.question.title}</Title>
 						<Info>{props.question.description}</Info>
 					</Row>

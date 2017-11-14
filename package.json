@@ -8,12 +8,14 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"deploy": "npm run build && gh-pages -d build",
+		"deploy":
+			"rsync -nrtvpl --exclude-from=.rsyncignore ./build cps_hiro:~/atcolor-web",
 		"flow": "flow",
 		"precommit": "lint-staged"
 	},
 	"dependencies": {
 		"camelcase-keys-recursive": "^0.8.2",
+		"material-ui": "^0.19.4",
 		"moment": "^2.19.1",
 		"normalizr": "^3.2.4",
 		"query-string": "^5.0.1",
@@ -52,9 +54,6 @@
 		"s2s-plugins-redux": "^0.3.2"
 	},
 	"lint-staged": {
-		"src/**/*.js": [
-			"prettier --config ./.prettierrc --write",
-			"git add"
-		]
+		"src/**/*.js": ["prettier --config ./.prettierrc --write", "git add"]
 	}
 }
