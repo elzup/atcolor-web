@@ -13,7 +13,9 @@
 		"precommit": "lint-staged"
 	},
 	"dependencies": {
+		"camelcase-keys-recursive": "^0.8.2",
 		"moment": "^2.19.1",
+		"normalizr": "^3.2.4",
 		"query-string": "^5.0.1",
 		"react": "^16.0.0",
 		"react-dom": "^16.0.0",
@@ -23,7 +25,8 @@
 		"redux": "^3.7.2",
 		"redux-persist": "^5.2.2",
 		"redux-thunk": "^2.2.0",
-		"styled-components": "^2.2.3"
+		"styled-components": "^2.2.3",
+		"superagent": "^3.8.1"
 	},
 	"devDependencies": {
 		"babel-eslint": "^7.2.3",
@@ -49,6 +52,9 @@
 		"s2s-plugins-redux": "^0.3.2"
 	},
 	"lint-staged": {
-		"src/**/*.js": ["prettier --config ./.prettierrc --write", "git add"]
+		"src/**/*.js": [
+			"prettier --config ./.prettierrc --write",
+			"git add"
+		]
 	}
 }
