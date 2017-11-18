@@ -18,6 +18,13 @@ class Container extends React.Component<Props> {
 				<Header>
 					<h1>Questions</h1>
 					<p>
+						<a
+							href="https://github.com/cpslab/NetproApiClient/blob/master/api-doc.md"
+							target="_blank"
+						>
+							Start Document
+						</a>
+						<br />
 						あなたの好きな言語で REST API を叩いてみよう。
 						<br /> Host: api-atcolor.cps.im.dendai.ac.jp
 					</p>
