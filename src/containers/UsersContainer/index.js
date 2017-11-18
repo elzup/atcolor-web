@@ -4,6 +4,7 @@ import { connect, type Connector } from 'react-redux'
 
 import type { State, User } from '../../types'
 import { Wrapper, Header } from '../../components'
+import { getUsersOrderByPoint } from './selectors'
 
 import styled from 'styled-components'
 
@@ -82,11 +83,8 @@ class Container extends React.Component<Props> {
 }
 
 const ms = (state: State) => {
-	const users = Object.values(state.UserById)
-	users.sort((a, b) => b.totalPoint - a.totalPoint)
-
 	return {
-		users,
+		users: getUsersOrderByPoint(state),
 		qids: Object.values(state.QuestionById).map(q => q.qid),
 	}
 }

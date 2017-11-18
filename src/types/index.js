@@ -46,6 +46,7 @@ export type User = {
 	twitter?: string,
 	language?: string,
 	solvedQuestions: number[],
+	lastSolvedAt: string,
 }
 
 export type Question = {

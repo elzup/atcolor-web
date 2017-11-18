@@ -13,6 +13,7 @@ var u: User = {
 	solvedQuestions: [],
 	username: 'fuga',
 	totalPoint: 0,
+	lastSolvedAt: '',
 }
 test('handle RECEIVE_USERS', () => {
 	expect(reducer(initialState, actions.receiveUsers([u]))).toEqual({ '0': u })
